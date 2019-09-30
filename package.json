@@ -1,0 +1,43 @@
+{
+    "name": "heta-highlight-vscode",
+    "displayName": "heta",
+    "description": "The package is plugin for VSCode editor to highlight Heta language code",
+    "version": "0.1.2",
+    "engines": {
+        "vscode": "^1.37.0"
+    },
+    "keywords": [
+        "heta",
+        "vscode-plugin",
+        "highlight",
+        "modeling",
+        "qsp",
+        "systems-biology"
+      ],
+    "categories": [
+        "Programming Languages"
+    ],
+    "contributors": [
+      "Evgeny Metelkin <evgeny.metelkin@gmail.com> (https://github.com/metelkin)",
+      "Victoria Tkachenko (https://github.com/vetedde)"
+    ],
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/insysbio/heta-highlight-vscode"
+    },
+    "license": "MIT",
+    "contributes": {
+        "languages": [{
+            "id": "Heta",
+            "aliases": ["Heta", "heta-lang", "heta"],
+            "extensions": [".heta"],
+            "configuration": "./language-configuration.json"
+        }],
+        "grammars": [{
+            "language": "Heta",
+            "scopeName": "source.heta",
+            "path": "./syntaxes/heta.json"
+        }]
+    },
+    "dependencies": {}
+}
