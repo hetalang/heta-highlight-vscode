@@ -1,4 +1,4 @@
-# heta-highlight-atom package
+# heta-highlight-vscode package
 
 The package is plugin for [Visual Studio Code](https://code.visualstudio.com/) editor to highlight Heta language code.
 
