@@ -17,40 +17,37 @@
 			"match": "(?:([A-Za-z_]\\w*)::)?([A-Za-z_]\\w*)",
 			"captures":{
 				"1": {
-					"name": "meta.space.heta"
+					"name": "space.heta"
 				},
-				"3": {
-					"name": "meta.id.heta"
+				"2": {
+					"name": "variable.parameter.id.heta"
 				}
 			}
 		},
 		"assignmentShort": {
-			"name": "assignment.heta",
-			"match": "([.:`]?\\=)\\s*([^,]+)",
+			"name": "meta.assignment.heta",
+			"match": "([.:`]?\\=)\\s*([^,;@#']+)",
 			"captures": {
 				"1": {
-					"name": "operator.heta"
+					"name": "keyword.operator.short.heta"
 				},
 				"2": {
-					"name": "string.heta"
+					"name": "string.other.expression.heta"
 				}
 			}
 		},
 		"assignment": {
-			"name": "assignment.heta",
-			"match": "(\\[([a-zA-Z_]?\\w*)\\]=)\\s*([^,]+)",
+			"name": "meta.assignment.heta",
+			"match": "(\\[([a-zA-Z_]?\\w*)\\]=)\\s*([^,;]+)",
 			"captures": {
 				"1":{
-					"name": "operator.heta"
+					"name": "keyword.operator.long.heta"
 				},
 				"2":{
-					"name": "meta.id.heta"
+					"name": "id.heta"
 				},
 				"3": {
-					"patterns": [
-						{ "include": "#string" },
-						{ "include": "#number" }
-					]
+					"name": "string.other.expression.heta"
 				}
 			}
 		},
@@ -59,19 +56,19 @@
 			"begin": "(namespace)\\s+(.*)\\s+(begin)",
 			"beginCaptures": {
 				"1": {
-					"name": "keyword.control.heta"
+					"name": "keyword.control.reserved.heta"
 				},
 				"2": {
-					"name": "meta.other.heta",
+					"name": "space.heta",
 					"patterns": []
 				},
 				"3": {
-					"name": "keyword.control.heta"
+					"name": "keyword.control.begin.heta"
 				}
 			},
 			"end": "end",
 			"endCaptures": {
-				"0": { "name": "keyword.control.heta" }
+				"0": { "name": "keyword.control.end.heta" }
 			},
 			"patterns": [
 				{ "include": "#linecomment" },
@@ -84,6 +81,7 @@
 			"name": "meta.basestruct.heta",
 			"end": ";",
 			"patterns": [
+				{ "include": "#index" },
 				{ "include": "#linecomment" },
 				{ "include": "#blockcomment" },
 				{ "include": "#class" },
@@ -98,16 +96,16 @@
 			"begin": "\\{",
 			"beginCaptures": {
 				"0": {
-					"name": "punctuation.definition.dictionary.begin.heta"
+					"name": "dictionary.begin.heta"
 				}
 			},
 			"end": "\\}",
 			"endCaptures": {
 				"0": {
-					"name": "punctuation.definition.dictionary.end.heta"
+					"name": "dictionary.end.heta"
 				}
 			},
-			"name": "meta.structure.dictionary.heta",
+			"name": "meta.dictionary.heta",
 			"patterns": [
 				{
 					"include": "#linecomment"
@@ -117,7 +115,7 @@
 					"begin": "([A-Za-z_][A-Za-z0-9_]*)\\s*:\\s*",
 					"beginCaptures": {
 						"1": {
-							"name": "variable.key.heta"
+							"name": "variable.other.key.heta"
 						}
 					},
 					"end": ",|$|(?=//)|(?=/\\*)|(?=\\})",
@@ -141,11 +139,11 @@
 			"match": "(true)|(false)"
 		},
 		"string": {
-			"name": "string.quoted.heta",
+			"name": "string.other.heta",
 			"match": "(\".*?\")|\\w([^\",\\}\\]]*)"
 		},
 		"array": {
-			"name": "other.heta",
+			"name": "meta.array.heta",
 			"begin": "\\[",
 			"end": "\\]",
 			"patterns": [			
@@ -162,7 +160,7 @@
 			]
 		},
 		"note": {
-			"name": "comment.block.note.heta",
+			"name": "comment.block.documentation.note.heta",
 			"begin": "'''",
 			"end": "'''"
 		},
@@ -175,7 +173,7 @@
 			"match": "'.*?'"
 		},
 		"linecomment": {
-			"name": "comment.double-slash.heta",
+			"name": "comment.line.double-slash.heta",
 			"begin": "//",
 			"end": "$"
 		},
