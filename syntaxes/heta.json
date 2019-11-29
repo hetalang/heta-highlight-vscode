@@ -78,19 +78,19 @@
 		},
 		"namespace": {
 			"name": "meta.namespace.heta",
-			"begin": "(\\b(?:abstract|concrete)\\b)?\\s*\\b(namespace)\\b\\s+(.*)\\s+(begin)",
+			"begin": "(\\b(abstract|concrete)\\b)?\\s*\\b(namespace)\\b\\s+(.*)\\s+(begin)",
 			"beginCaptures": {
 				"1": {
 					"name": "keyword.control.reserved.heta"
 				},
-				"2": {
+				"3": {
 					"name": "keyword.control.reserved.heta"
 				},
-				"3": {
+				"4": {
 					"name": "space.heta",
 					"patterns": []
 				},
-				"4": {
+				"5": {
 					"name": "keyword.control.begin.heta"
 				}
 			},
