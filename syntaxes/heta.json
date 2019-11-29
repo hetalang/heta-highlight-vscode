@@ -78,16 +78,19 @@
 		},
 		"namespace": {
 			"name": "meta.namespace.heta",
-			"begin": "(namespace)\\s+(.*)\\s+(begin)",
+			"begin": "(\\b(?:abstract|concrete)\\b)?\\s*\\b(namespace)\\b\\s+(.*)\\s+(begin)",
 			"beginCaptures": {
 				"1": {
 					"name": "keyword.control.reserved.heta"
 				},
 				"2": {
+					"name": "keyword.control.reserved.heta"
+				},
+				"3": {
 					"name": "space.heta",
 					"patterns": []
 				},
-				"3": {
+				"4": {
 					"name": "keyword.control.begin.heta"
 				}
 			},

@@ -3,7 +3,7 @@
     "displayName": "Heta highlight VSCode",
     "publisher": "insysbio",
     "description": "The package is plugin for VSCode editor to highlight Heta language code",
-    "version": "0.1.3",
+    "version": "0.1.4",
     "engines": {
         "vscode": "^1.37.0"
     },
