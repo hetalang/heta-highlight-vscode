@@ -62,7 +62,7 @@
 		},
 		"includeStatement": {
 			"name": "meta.include.heta",
-			"match": "(include)\\s+(\"?[\\w./]+\"?)(?:\\s+(type)\\s+(\"?\\w+\"?))?(?:\\s+(with)\\s+(.+))?",
+			"match": "(include)\\s+(\"?[\\w./\\-]+\"?)(?:\\s+(type)\\s+(\"?\\w+\"?))?(?:\\s+(with)\\s+(.+))?",
 			"captures": {
 				"1": {
 					"name": "keyword.control.reserved.heta"
