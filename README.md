@@ -1,7 +1,7 @@
 [![Heta project](https://img.shields.io/badge/%CD%B1-Heta_project-blue)](https://hetalang.github.io/)
 [![Visual Studio Marketplace Version](https://img.shields.io/visual-studio-marketplace/v/insysbio.heta-highlight-vscode)](https://marketplace.visualstudio.com/items?itemName=insysbio.heta-highlight-vscode)
 ![Visual Studio Marketplace Installs](https://img.shields.io/visual-studio-marketplace/i/insysbio.heta-highlight-vscode)
-
+![GitHub](https://img.shields.io/github/license/insysbio/heta-highlight-vscode)
 
 # heta-highlight-vscode package
 
