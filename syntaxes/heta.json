@@ -146,9 +146,8 @@
 			},
 			"name": "meta.dictionary.heta",
 			"patterns": [
-				{
-					"include": "#linecomment"
-				},
+				{ "include": "#linecomment" },
+				{ "include": "#blockcomment" },
 				{
 					"name": "entity.other.heta",
 					"begin": "([A-Za-z_][A-Za-z0-9_]*)\\s*:\\s*",
@@ -159,7 +158,6 @@
 					},
 					"end": ",|(?=//)|(?=/\\*)|(?=\\})",
 					"patterns": [
-						{ "include": "#linecomment" },
 						{ "include": "#dict" },
 						{ "include": "#array" },
 						{ "include": "#boolean" },
@@ -179,23 +177,32 @@
 		},
 		"string": {
 			"name": "string.other.heta",
-			"match": "(\".*?\")|([^\",\\}\\]]*)"
+			"match": "\".*?\"|[^\"]*?(?=(//|/\\*|,|}|]|$))"
 		},
 		"array": {
 			"name": "meta.array.heta",
 			"begin": "\\[",
 			"end": "\\]",
-			"patterns": [			
-				{
-					"match": "([ \\r\\n]*),([ \\r\\n]*)",
-					"name": "punctuation.separator.array.heta"
-				},
+			"patterns": [
 				{ "include": "#linecomment" },
-				{ "include": "#dict" },
-				{ "include": "#array" },
-				{ "include": "#boolean" },	
-				{ "include": "#number" },	
-				{ "include": "#string" }
+				{ "include": "#blockcomment" },
+				{ "match": "\\s+" },
+				{	
+					"begin": "",
+					"end": ",|(?=//)|(?=/\\*)|(?=\\})",
+					"endCaptures": {
+						"0": {
+							"name": "array.end.heta"
+						}
+					},
+					"patterns": [		
+						{ "include": "#boolean" },
+						{ "include": "#number" },
+						{ "include": "#string" },
+						{ "include": "#dict" },
+						{ "include": "#array" }
+					]
+				}
 			]
 		},
 		"note": {
