@@ -1,3 +1,4 @@
 /dist
 *.log
 /draft
+/node_modules

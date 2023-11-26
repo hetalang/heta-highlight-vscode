@@ -8,8 +8,8 @@
         "vscode": "^1.37.0"
     },
     "scripts": {
-        "pack": "vsce package -o dist/heta-highlight-vscode.vsix",
-        "publish": "vsce publish"
+        "pack": "npx vsce package -o dist/heta-highlight-vscode.vsix",
+        "publish": "npx vsce publish"
     },
     "keywords": [
         "heta",
@@ -18,31 +18,44 @@
         "modeling",
         "qsp",
         "systems-biology"
-      ],
+    ],
     "categories": [
         "Programming Languages"
     ],
     "contributors": [
-      "Evgeny Metelkin <evgeny.metelkin@gmail.com> (https://github.com/metelkin)",
-      "Victoria Tkachenko (https://github.com/vetedde)"
+        "Evgeny Metelkin <evgeny.metelkin@gmail.com> (https://github.com/metelkin)",
+        "Victoria Tkachenko (https://github.com/vetedde)"
     ],
     "repository": {
-      "type": "git",
-      "url": "https://github.com/insysbio/heta-highlight-vscode"
+        "type": "git",
+        "url": "https://github.com/insysbio/heta-highlight-vscode"
     },
     "license": "MIT",
     "contributes": {
-        "languages": [{
-            "id": "Heta",
-            "aliases": ["Heta", "heta-lang", "heta"],
-            "extensions": [".heta"],
-            "configuration": "./language-configuration.json"
-        }],
-        "grammars": [{
-            "language": "Heta",
-            "scopeName": "source.heta",
-            "path": "./syntaxes/heta.json"
-        }]
+        "languages": [
+            {
+                "id": "Heta",
+                "aliases": [
+                    "Heta",
+                    "heta-lang",
+                    "heta"
+                ],
+                "extensions": [
+                    ".heta"
+                ],
+                "configuration": "./language-configuration.json"
+            }
+        ],
+        "grammars": [
+            {
+                "language": "Heta",
+                "scopeName": "source.heta",
+                "path": "./syntaxes/heta.json"
+            }
+        ]
     },
-    "dependencies": {}
+    "dependencies": {},
+    "devDependencies": {
+        "@vscode/vsce": "^2.22.0"
+    }
 }
