@@ -1,7 +1,7 @@
 [![Heta project](https://img.shields.io/badge/%CD%B1-Heta_project-blue)](https://hetalang.github.io/)
 [![Visual Studio Marketplace Version](https://img.shields.io/visual-studio-marketplace/v/insysbio.heta-highlight-vscode)](https://marketplace.visualstudio.com/items?itemName=insysbio.heta-highlight-vscode)
 ![Visual Studio Marketplace Installs](https://img.shields.io/visual-studio-marketplace/i/insysbio.heta-highlight-vscode)
-![GitHub](https://img.shields.io/github/license/insysbio/heta-highlight-vscode)
+![GitHub](https://img.shields.io/github/license/hetalang/heta-highlight-vscode)
 
 # heta-highlight-vscode package
 
@@ -42,9 +42,13 @@ npx vsce publish # or npm run publish
 
 ### Way 2 - VSCode
 
-1. in VSCOde install Package `TextMate Languages`
+1. in VSCode install Package `TextMate Languages`
 2. View => Command Palette (ctrl+shift+p in Windows) type: `Convert to tmLanguage PLIST...`
 3. Save to `heta.tmLanguage` and use Sublime for other actions (#8)
 
 ## Screenshot
 ![Screenshot of the package](./screen0.png)
+
+## License
+
+[MIT](LICENSE)
