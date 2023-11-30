@@ -156,7 +156,7 @@
 							"name": "variable.other.key.heta"
 						}
 					},
-					"end": ",|(?=//)|(?=/\\*)|(?=\\})",
+					"end": ",|(?=//)|(?=/\\*)|(?=})",
 					"patterns": [
 						{ "include": "#dict" },
 						{ "include": "#array" },
@@ -189,18 +189,18 @@
 				{ "match": "\\s+" },
 				{	
 					"begin": "",
-					"end": ",|(?=//)|(?=/\\*)|(?=\\})",
+					"end": ",|(?=//)|(?=/\\*)|(?=\\])",
 					"endCaptures": {
 						"0": {
 							"name": "array.end.heta"
 						}
 					},
-					"patterns": [		
+					"patterns": [
+						{ "include": "#dict" },
+						{ "include": "#array" },
 						{ "include": "#boolean" },
 						{ "include": "#number" },
-						{ "include": "#string" },
-						{ "include": "#dict" },
-						{ "include": "#array" }
+						{ "include": "#string" }
 					]
 				}
 			]
