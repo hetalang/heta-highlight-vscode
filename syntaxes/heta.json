@@ -14,16 +14,13 @@
 	],
 	"repository": {
 		"unknown": {
-			"name": "invalid.illegal",
+			"name": "invalid.illegal.heta",
 			"match": ".+"
 		},
 		"index": {
 			"name": "meta.index.heta",
 			"match": "(?:([A-Za-z_]\\w*)::)?([A-Za-z_]\\w*)",
 			"captures":{
-				"1": {
-					"name": "space.heta"
-				},
 				"2": {
 					"name": "variable.parameter.id.heta"
 				}
@@ -95,10 +92,6 @@
 				},
 				"3": {
 					"name": "keyword.control.reserved.heta"
-				},
-				"4": {
-					"name": "space.heta",
-					"patterns": []
 				},
 				"5": {
 					"name": "keyword.control.begin.heta"
