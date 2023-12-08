@@ -47,7 +47,7 @@ npx vsce publish # or npm run publish
 3. Save to `heta.tmLanguage` and use Sublime for other actions (#8)
 
 ## Screenshot
-![Screenshot of the package](./screen0.png)
+![Screenshot of the package](./img/screen0.png)
 
 ## License
 
