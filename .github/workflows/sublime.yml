@@ -35,9 +35,10 @@ jobs:
         run: npx plist2 syntaxes/heta.json dist/heta.tmLanguage
 
       - name: Deploy to "hetalang/heta-highlight-sublime"
-        uses: JamesIves/github-pages-deploy-action@releases/v3
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          BRANCH: gh-pages # The branch the action should deploy to.
-          FOLDER: dist # The folder the action should deploy.
-          CLEAN: false
+          folder: dist
+          repository-name: hetalang/heta-highlight-sublime
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: main
+          clean: false
