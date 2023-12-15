@@ -39,6 +39,6 @@ jobs:
         with:
           folder: dist
           repository-name: hetalang/heta-highlight-sublime
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.DEPLOY_TOKEN }}
           branch: main
           clean: false
