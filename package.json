@@ -9,7 +9,8 @@
     },
     "scripts": {
         "pack": "npx vsce package -o dist/heta-highlight-vscode.vsix",
-        "publish": "npx vsce publish"
+        "publish": "npx vsce publish",
+        "convert": "npx plist2 syntaxes/heta.json dist/heta.tmLanguage"
     },
     "keywords": [
         "heta",
@@ -54,8 +55,8 @@
             }
         ]
     },
-    "dependencies": {},
     "devDependencies": {
-        "@vscode/vsce": "^2.22.0"
+        "@vscode/vsce": "^2.22.0",
+        "plist2": "^1.1.3"
     }
 }
