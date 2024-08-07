@@ -152,6 +152,7 @@
 						{ "include": "#dict" },
 						{ "include": "#array" },
 						{ "include": "#boolean" },
+						{ "include": "#null" },
 						{ "include": "#number" },
 						{ "include": "#string" }
 					]
@@ -165,6 +166,10 @@
 		"boolean": {
 			"name": "constant.language.heta",
 			"match": "(true)|(false)"
+		},
+		"null": {
+			"name": "constant.language.heta",
+			"match": "null"
 		},
 		"string": {
 			"name": "string.other.heta",
@@ -190,6 +195,7 @@
 						{ "include": "#dict" },
 						{ "include": "#array" },
 						{ "include": "#boolean" },
+						{ "include": "#null" },
 						{ "include": "#number" },
 						{ "include": "#string" }
 					]
