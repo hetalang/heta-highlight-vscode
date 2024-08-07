@@ -1,5 +1,14 @@
 # Change Log
 
+## 0.1.10
+
+- highlight `null`
+
+## 0.1.9
+
+- remove pattern from captures in `include`
+- fix scopes
+
 ## 0.1.8
 
 - fix bug inside arrays
