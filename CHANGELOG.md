@@ -1,5 +1,9 @@
 # Change Log
 
+## 0.1.11
+
+- fix bug to use strings like this: `"hello \" world"`
+
 ## 0.1.10
 
 - highlight `null`
