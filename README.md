@@ -5,7 +5,7 @@
 
 # heta-highlight-vscode package
 
-The package is plugin for [Visual Studio Code](https://code.visualstudio.com/) editor to highlight the Heta language code.
+The package is a plugin for [Visual Studio Code](https://code.visualstudio.com/) editor to highlight the Heta language code.
 
 This is part of [Heta project](https://hetalang.github.io/).
 
@@ -35,7 +35,7 @@ npx vsce publish # or npm run publish
 3. Install Package Control: https://packagecontrol.io/installation
 4. Tools => Command Palette... (ctrl+shift+p in Windows), type `install package`
 5. Select and install `PackageDev`
-6. Tools => Command Palette... (ctrl+shift+p in Windows), type `PackageDev: Convert (YAML...`, Convert to property list
+6. Tools => Command Palette... (ctrl+shift+p in Windows), type `PackageDev: Convert (YAML...) to Property List`
 7. Rename `heta.plist` to `heta.tmLanguage`
 8. Tools => Developer => New Syntax from heta.tmLanguage
 9. Save file `heta.sublime-syntax` to C:\Users\<user>\AppData\Roaming\Sublime Text 3\Packages\User

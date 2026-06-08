@@ -2,7 +2,7 @@
     "name": "heta-highlight-vscode",
     "displayName": "Heta highlight VSCode",
     "publisher": "insysbio",
-    "description": "The package is plugin for VSCode editor to highlight Heta language code",
+    "description": "The package is a plugin for VSCode editor to highlight Heta language code",
     "version": "0.1.11",
     "engines": {
         "vscode": "^1.37.0"
@@ -24,7 +24,7 @@
         "Programming Languages"
     ],
     "contributors": [
-        "Evgeny Metelkin <evgeny.metelkin@gmail.com> (https://github.com/metelkin)",
+        "Evgeny Metelkin <evgeny.metelkin@gmail.com> (https://metelkin.me/)",
         "Victoria Tkachenko (https://github.com/vetedde)"
     ],
     "repository": {

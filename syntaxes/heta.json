@@ -31,7 +31,7 @@
 			"match": "(=)\\s*([-+]?[0-9]+[.]?[0-9]*([eE][-+]?[0-9]+)?)",
 			"captures": {
 				"1": {
-					"name": "keyword.operator.short.heta"
+					"name": "keyword.operator.assignment.heta"
 				},
 				"2": {
 					"name": "constant.numeric.heta"
@@ -44,10 +44,10 @@
 			"end": "(?=[;{@#'])",
 			"beginCaptures": {
 				"0": {
-					"name": "keyword.operator.short.heta"
+					"name": "keyword.operator.assignment.heta"
 				},
 				"3": {
-					"name": "id.heta"
+					"name": "variable.parameter.heta"
 				}
 			},
 			"patterns": [
@@ -126,13 +126,13 @@
 			"begin": "\\{",
 			"beginCaptures": {
 				"0": {
-					"name": "dictionary.begin.heta"
+					"name": "punctuation.section.block.begin.heta"
 				}
 			},
 			"end": "\\}",
 			"endCaptures": {
 				"0": {
-					"name": "dictionary.end.heta"
+					"name": "punctuation.section.block.end.heta"
 				}
 			},
 			"name": "meta.dictionary.heta",
@@ -144,7 +144,7 @@
 					"begin": "([A-Za-z_][A-Za-z0-9_]*)\\s*:\\s*",
 					"beginCaptures": {
 						"1": {
-							"name": "variable.other.key.heta"
+							"name": "variable.other.property.heta"
 						}
 					},
 					"end": ",|(?=//)|(?=/\\*)|(?=})",
@@ -153,6 +153,7 @@
 						{ "include": "#array" },
 						{ "include": "#boolean" },
 						{ "include": "#null" },
+						{ "include": "#unitExpression" },
 						{ "include": "#number" },
 						{ "include": "#string" }
 					]
@@ -163,13 +164,17 @@
 			"name": "constant.numeric.heta",
 			"match": "[-+]?[0-9]+[.]?[0-9]*([eE][-+]?[0-9]+)?\\b"
 		},
+		"unitExpression": {
+			"name": "string.other.expression.heta",
+			"match": "[-+]?[0-9]+[.]?[0-9]*([eE][-+]?[0-9]+)?(?:\\s*/\\s*[A-Za-z_][A-Za-z0-9_]*)+\\b"
+		},
 		"boolean": {
 			"name": "constant.language.heta",
-			"match": "(true)|(false)"
+			"match": "\\b(true|false)\\b"
 		},
 		"null": {
 			"name": "constant.language.heta",
-			"match": "null"
+			"match": "\\bnull\\b"
 		},
 		"string": {
 			"name": "string.other.heta",
@@ -196,6 +201,7 @@
 						{ "include": "#array" },
 						{ "include": "#boolean" },
 						{ "include": "#null" },
+						{ "include": "#unitExpression" },
 						{ "include": "#number" },
 						{ "include": "#string" }
 					]
@@ -212,7 +218,7 @@
 			"match": "@\\w+"
 		},
 		"title":{
-			"name": "string.quoted.heta",
+			"name": "string.quoted.single.heta",
 			"match": "'.*?'"
 		},
 		"linecomment": {
