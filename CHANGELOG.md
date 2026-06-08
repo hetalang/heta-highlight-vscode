@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.1.12
+
+- highlight unit expressions like `1/hour` as a single token inside dictionary/array values
+- fix false-positive highlighting for `true`/`false`/`null` inside longer identifiers
+- tune TextMate scopes for better theme compatibility (assignment operator, dictionary keys/braces, single-quoted strings)
+
 ## 0.1.11
 
 - fix bug to use strings like this: `"hello \" world"`
