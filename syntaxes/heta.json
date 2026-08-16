@@ -28,19 +28,31 @@
 		},
 		"assignmentConst": {
 			"name": "meta.assignment.heta",
-			"match": "(=)\\s*([-+]?[0-9]+[.]?[0-9]*([eE][-+]?[0-9]+)?)",
+			"match": "(=)\\s*(?:([-+]?(?:NaN|Infinity)\\b|[-+]?[0-9]+[.]?[0-9]*(?:[eE][-+]?[0-9]+)?\\b)|\\b(null)\\b)",
 			"captures": {
 				"1": {
 					"name": "keyword.operator.assignment.heta"
 				},
 				"2": {
 					"name": "constant.numeric.heta"
+				},
+				"3": {
+					"name": "constant.language.heta"
+				}
+			}
+		},
+		"invalidAssignmentConst": {
+			"name": "invalid.illegal.assignment.heta",
+			"match": "(=)\\s*[^;\\r\\n]*(?=;|$)",
+			"captures": {
+				"1": {
+					"name": "keyword.operator.assignment.heta"
 				}
 			}
 		},
 		"assignment": {
 			"name": "meta.assignment.heta",
-			"begin": "([.:]=)|(\\[(\\w*)\\]=)",
+			"begin": "([.:]=)|(\\[([A-Za-z_]\\w*)?\\]=)",
 			"end": "(?=[;{@#'])",
 			"beginCaptures": {
 				"0": {
@@ -56,6 +68,15 @@
 					"name": "string.other.expression.heta"
 				}
 			]
+		},
+		"invalidStringAssignment": {
+			"name": "invalid.illegal.assignment.heta",
+			"match": "(?:[.:]=|\\[[^\\]\\r\\n]*\\]=)\\s*(?=;|$)|(?:[.:]=|\\[(?:[A-Za-z_]\\w*)?\\]=)\\s*[^;\\r\\n]*(?=$)|\\[(?:[0-9][^\\]\\r\\n]*|[A-Za-z_]\\w*[^A-Za-z0-9_\\]\\r\\n][^\\]\\r\\n]*|[^A-Za-z0-9_\\]\\r\\n][^\\]\\r\\n]*)\\]=",
+			"captures": {
+				"0": {
+					"name": "invalid.illegal.assignment.heta"
+				}
+			}
 		},
 		"includeStatement": {
 			"name": "meta.include.heta",
@@ -119,6 +140,8 @@
 				{ "include": "#title" },
 				{ "include": "#dict" },
 				{ "include": "#assignmentConst" },
+				{ "include": "#invalidAssignmentConst" },
+				{ "include": "#invalidStringAssignment" },
 				{ "include": "#assignment" }
 			]
 		},
