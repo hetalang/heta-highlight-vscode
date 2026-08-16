@@ -138,6 +138,7 @@
 				{ "include": "#class" },
 				{ "include": "#action" },
 				{ "include": "#title" },
+				{ "include": "#invalidTitle" },
 				{ "include": "#dict" },
 				{ "include": "#assignmentConst" },
 				{ "include": "#invalidAssignmentConst" },
@@ -254,6 +255,10 @@
 		"title":{
 			"name": "string.quoted.single.heta",
 			"match": "'.*?'"
+		},
+		"invalidTitle": {
+			"name": "invalid.illegal.unterminated-title.heta",
+			"match": "'(?:\\\\.|[^'\\\\\\r\\n])*(?=;|$)"
 		},
 		"linecomment": {
 			"name": "comment.line.double-slash.heta",
