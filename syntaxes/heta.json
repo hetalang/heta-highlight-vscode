@@ -139,6 +139,7 @@
 			"patterns": [
 				{ "include": "#linecomment" },
 				{ "include": "#blockcomment" },
+				{ "include": "#invalidDictionaryKey" },
 				{
 					"name": "entity.other.heta",
 					"begin": "([A-Za-z_][A-Za-z0-9_]*)\\s*:\\s*",
@@ -155,6 +156,7 @@
 						{ "include": "#null" },
 						{ "include": "#unitExpression" },
 						{ "include": "#number" },
+						{ "include": "#invalidString" },
 						{ "include": "#string" }
 					]
 				}
@@ -162,7 +164,7 @@
 		},
 		"number": {
 			"name": "constant.numeric.heta",
-			"match": "[-+]?[0-9]+[.]?[0-9]*([eE][-+]?[0-9]+)?\\b"
+			"match": "(?:[-+]?(?:NaN|Infinity)\\b)|(?:[-+]?[0-9]+[.]?[0-9]*([eE][-+]?[0-9]+)?\\b)"
 		},
 		"unitExpression": {
 			"name": "string.other.expression.heta",
@@ -179,6 +181,14 @@
 		"string": {
 			"name": "string.other.heta",
 			"match": "(?<!\\\\)\".*?(?<!\\\\)\"|[^\"]*?(?=(//|/\\*|,|}|]|$))"
+		},
+		"invalidDictionaryKey": {
+			"name": "invalid.illegal.dictionary-key.heta",
+			"match": "(?<=\\{|,)\\s*(?:\"[^\"]*\"|[0-9][^\\s:]*|[A-Za-z_][A-Za-z0-9_]*(?:\\s+\\S+|[^A-Za-z0-9_\\s][^\\s:]*)|[^\\s:A-Za-z0-9_][^\\s:]*)\\s*:"
+		},
+		"invalidString": {
+			"name": "invalid.illegal.unterminated-string.heta",
+			"match": "\"(?:\\\\.|[^\"\\\\\\r\\n])*$"
 		},
 		"array": {
 			"name": "meta.array.heta",
@@ -203,6 +213,7 @@
 						{ "include": "#null" },
 						{ "include": "#unitExpression" },
 						{ "include": "#number" },
+						{ "include": "#invalidString" },
 						{ "include": "#string" }
 					]
 				}
