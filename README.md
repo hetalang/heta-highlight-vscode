@@ -22,7 +22,7 @@ Press F5
 
 ```bash
 # npm i
-# npx vsce login
+# npx vsce login insysbio
 npx vsce publish # or npm run publish
 ```
 
