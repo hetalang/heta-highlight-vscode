@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.2.0
+
+- align basic token highlighting with the current Heta PEG grammar
+- highlight common syntax errors in identifiers, assignments, dictionary values, titles, notes, and include statements
+- improve numeric literals and quoted assignment strings
+
 ## 0.1.13
 
 - display `NaN`, `Infinity` as numbers in dictionary

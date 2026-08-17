@@ -7,7 +7,9 @@
 	"patterns": [
 		{ "include": "#linecomment" },
 		{ "include": "#blockcomment" },
+		{ "include": "#invalidEmptyNote" },
 		{ "include": "#note" },
+		{ "include": "#invalidIncludeStatement" },
 		{ "include": "#includeStatement" },
 		{ "include": "#namespace" },
 		{ "include": "#basestruct" }
@@ -19,7 +21,7 @@
 		},
 		"index": {
 			"name": "meta.index.heta",
-			"match": "(?:([A-Za-z_]\\w*)::)?([A-Za-z_]\\w*)",
+			"match": "(?:([A-Za-z_][A-Za-z0-9_]*)::)?([A-Za-z_][A-Za-z0-9_]*|\\*)",
 			"captures":{
 				"2": {
 					"name": "variable.parameter.id.heta"
@@ -28,7 +30,7 @@
 		},
 		"assignmentConst": {
 			"name": "meta.assignment.heta",
-			"match": "(=)\\s*(?:([-+]?(?:NaN|Infinity)\\b|[-+]?[0-9]+[.]?[0-9]*(?:[eE][-+]?[0-9]+)?\\b)|\\b(null)\\b)",
+			"match": "(=)\\s*(?:([-+]?(?:NaN|Infinity)\\b|[-+]?(?:(?:[0-9]+(?:\\.[0-9]+)?)|(?:\\.[0-9]+))(?:[eE][-+]?[0-9]+)?\\b)|\\b(null)\\b)(?=\\s*(?:[;{#@']))",
 			"captures": {
 				"1": {
 					"name": "keyword.operator.assignment.heta"
@@ -43,7 +45,7 @@
 		},
 		"invalidAssignmentConst": {
 			"name": "invalid.illegal.assignment.heta",
-			"match": "(=)\\s*[^;\\r\\n]*(?=;|$)",
+			"match": "(=)\\s*[^;\\r\\n]*(?=;)",
 			"captures": {
 				"1": {
 					"name": "keyword.operator.assignment.heta"
@@ -52,7 +54,7 @@
 		},
 		"assignment": {
 			"name": "meta.assignment.heta",
-			"begin": "([.:]=)|(\\[([A-Za-z_]\\w*)?\\]=)",
+			"begin": "([.:]=|`=)|(\\[([A-Za-z_][A-Za-z0-9_]*)?\\]=)",
 			"end": "(?=[;{@#'])",
 			"beginCaptures": {
 				"0": {
@@ -63,24 +65,34 @@
 				}
 			},
 			"patterns": [
+				{ "include": "#quotedAssignmentString" },
 				{ 
-					"match": "[^;{@#']*", 
+					"match": "[^;{\"@#']+",
 					"name": "string.other.expression.heta"
 				}
 			]
 		},
+		"quotedAssignmentString": {
+			"name": "string.other.expression.heta",
+			"begin": "\"",
+			"end": "(?<!\\\\)\""
+		},
 		"invalidStringAssignment": {
 			"name": "invalid.illegal.assignment.heta",
-			"match": "(?:[.:]=|\\[[^\\]\\r\\n]*\\]=)\\s*(?=;|$)|(?:[.:]=|\\[(?:[A-Za-z_]\\w*)?\\]=)\\s*[^;\\r\\n]*(?=$)|\\[(?:[0-9][^\\]\\r\\n]*|[A-Za-z_]\\w*[^A-Za-z0-9_\\]\\r\\n][^\\]\\r\\n]*|[^A-Za-z0-9_\\]\\r\\n][^\\]\\r\\n]*)\\]=",
+			"match": "(?:[.:]=|`=|\\[[^\\]\\r\\n]*\\]=)\\s*(?=;)|\\[(?:[0-9][^\\]\\r\\n]*|[A-Za-z_][A-Za-z0-9_]*[^A-Za-z0-9_\\]\\r\\n][^\\]\\r\\n]*|[^A-Za-z0-9_\\]\\r\\n][^\\]\\r\\n]*)\\]=",
 			"captures": {
 				"0": {
 					"name": "invalid.illegal.assignment.heta"
 				}
 			}
 		},
+		"invalidIncludeStatement": {
+			"name": "invalid.illegal.include.heta",
+			"match": "\\binclude\\b\\s*(?=$)|\\binclude\\b[^\\r\\n]*\\bwith\\b(?!\\s*\\{)\\s*[^\\r\\n]*|\\binclude\\b[^\\r\\n]*\\btype\\b\\s+\"?[A-Za-z0-9]*_[^\\s\"]*\"?"
+		},
 		"includeStatement": {
 			"name": "meta.include.heta",
-			"match": "(include)\\s+(\"?[\\w./\\-]+\"?)(?:\\s+(type)\\s+(\"?\\w+\"?))?(?:\\s+(with)\\s+(.+))?",
+			"match": "(include)\\s+(\"?[A-Za-z0-9._/\\\\-]+\"?)(?:\\s+(type)\\s+(\"?[A-Za-z0-9]+\"?))?(?:\\s+(with)\\s+(\\{.+\\}))?",
 			"captures": {
 				"1": {
 					"name": "keyword.control.reserved.heta"
@@ -123,7 +135,9 @@
 			"patterns": [
 				{ "include": "#linecomment" },
 				{ "include": "#blockcomment" },
+				{ "include": "#invalidIncludeStatement" },
 				{ "include": "#includeStatement" },
+				{ "include": "#invalidEmptyNote" },
 				{ "include": "#note"},
 				{ "include": "#basestruct"}
 			]
@@ -132,19 +146,33 @@
 			"name": "meta.basestruct.heta",
 			"end": ";",
 			"patterns": [
+				{ "include": "#invalidIdentifier" },
+				{ "include": "#invalidIndex" },
 				{ "include": "#index" },
 				{ "include": "#linecomment" },
 				{ "include": "#blockcomment" },
+				{ "include": "#invalidEmptyNote" },
+				{ "include": "#note" },
+				{ "include": "#invalidClass" },
 				{ "include": "#class" },
+				{ "include": "#invalidAction" },
 				{ "include": "#action" },
+				{ "include": "#invalidEmptyTitle" },
 				{ "include": "#title" },
-				{ "include": "#invalidTitle" },
 				{ "include": "#dict" },
 				{ "include": "#assignmentConst" },
 				{ "include": "#invalidAssignmentConst" },
 				{ "include": "#invalidStringAssignment" },
 				{ "include": "#assignment" }
 			]
+		},
+		"invalidIdentifier": {
+			"name": "invalid.illegal.identifier.heta",
+			"match": "(?<![A-Za-z0-9_])(?:[0-9]+[A-Za-z_][A-Za-z0-9_]*|[A-Za-z_][A-Za-z0-9_]*-[A-Za-z0-9_-]+)(?![A-Za-z0-9_])"
+		},
+		"invalidIndex": {
+			"name": "invalid.illegal.index.heta",
+			"match": "(?:[A-Za-z_][A-Za-z0-9_]*|\\*)::\\s*(?=;|$)|::(?:[A-Za-z_][A-Za-z0-9_]*|\\*)|:{3,}"
 		},
 		"dict": {
 			"begin": "\\{",
@@ -164,6 +192,7 @@
 				{ "include": "#linecomment" },
 				{ "include": "#blockcomment" },
 				{ "include": "#invalidDictionaryKey" },
+				{ "include": "#invalidDictionaryValue" },
 				{
 					"name": "entity.other.heta",
 					"begin": "([A-Za-z_][A-Za-z0-9_]*)\\s*:\\s*",
@@ -180,7 +209,6 @@
 						{ "include": "#null" },
 						{ "include": "#unitExpression" },
 						{ "include": "#number" },
-						{ "include": "#invalidString" },
 						{ "include": "#string" }
 					]
 				}
@@ -188,11 +216,11 @@
 		},
 		"number": {
 			"name": "constant.numeric.heta",
-			"match": "(?:[-+]?(?:NaN|Infinity)\\b)|(?:[-+]?[0-9]+[.]?[0-9]*([eE][-+]?[0-9]+)?\\b)"
+			"match": "(?:[-+]?(?:NaN|Infinity)\\b)|(?:[-+]?(?:(?:[0-9]+(?:\\.[0-9]+)?)|(?:\\.[0-9]+))(?:[eE][-+]?[0-9]+)?\\b)"
 		},
 		"unitExpression": {
 			"name": "string.other.expression.heta",
-			"match": "[-+]?[0-9]+[.]?[0-9]*([eE][-+]?[0-9]+)?(?:\\s*/\\s*[A-Za-z_][A-Za-z0-9_]*)+\\b"
+			"match": "[-+]?(?:(?:[0-9]+(?:\\.[0-9]+)?)|(?:\\.[0-9]+))(?:[eE][-+]?[0-9]+)?(?:\\s*/\\s*[A-Za-z_][A-Za-z0-9_]*)+\\b"
 		},
 		"boolean": {
 			"name": "constant.language.heta",
@@ -210,9 +238,9 @@
 			"name": "invalid.illegal.dictionary-key.heta",
 			"match": "(?<=\\{|,)\\s*(?:\"[^\"]*\"|[0-9][^\\s:]*|[A-Za-z_][A-Za-z0-9_]*(?:\\s+\\S+|[^A-Za-z0-9_\\s][^\\s:]*)|[^\\s:A-Za-z0-9_][^\\s:]*)\\s*:"
 		},
-		"invalidString": {
-			"name": "invalid.illegal.unterminated-string.heta",
-			"match": "\"(?:\\\\.|[^\"\\\\\\r\\n])*$"
+		"invalidDictionaryValue": {
+			"name": "invalid.illegal.dictionary-value.heta",
+			"match": "[A-Za-z_][A-Za-z0-9_]*\\s*:\\s*(?=,|})"
 		},
 		"array": {
 			"name": "meta.array.heta",
@@ -237,7 +265,6 @@
 						{ "include": "#null" },
 						{ "include": "#unitExpression" },
 						{ "include": "#number" },
-						{ "include": "#invalidString" },
 						{ "include": "#string" }
 					]
 				}
@@ -248,17 +275,26 @@
 			"begin": "'''",
 			"end": "'''"
 		},
+		"invalidEmptyNote": {
+			"name": "invalid.illegal.empty-note.heta",
+			"match": "(?<!')'{6}(?!')"
+		},
+		"invalidClass": {
+			"name": "invalid.illegal.class.heta",
+			"match": "@(?:(?![A-Za-z_])[^\\s;]+|[A-Za-z_][A-Za-z0-9_]*[^A-Za-z0-9_\\s;{#@'=:.\\[/][^\\s;]*)|@(?=\\s*(?:;|$))"
+		},
 		"class": {
 			"name": "support.class.heta",
-			"match": "@\\w+"
+			"match": "@[A-Za-z_][A-Za-z0-9_]*"
 		},
-		"title":{
+		"invalidEmptyTitle": {
+			"name": "invalid.illegal.empty-title.heta",
+			"match": "(?<!')''(?!')"
+		},
+		"title": {
 			"name": "string.quoted.single.heta",
-			"match": "'.*?'"
-		},
-		"invalidTitle": {
-			"name": "invalid.illegal.unterminated-title.heta",
-			"match": "'(?:\\\\.|[^'\\\\\\r\\n])*(?=;|$)"
+			"begin": "(?<!')'(?!'')",
+			"end": "'"
 		},
 		"linecomment": {
 			"name": "comment.line.double-slash.heta",
@@ -270,9 +306,13 @@
 			"begin": "/\\*",
 			"end": "\\*/"
 		},
+		"invalidAction": {
+			"name": "invalid.illegal.action.heta",
+			"match": "#(?:(?![A-Za-z_])[^\\s;]+|[A-Za-z_][A-Za-z0-9_]*[^A-Za-z0-9_\\s;{#@'=:.\\[/][^\\s;]*)|#(?=\\s*(?:;|$))"
+		},
 		"action": {
 			"name": "support.function.action.heta",
-			"match": "#\\w+"
+			"match": "#[A-Za-z_][A-Za-z0-9_]*"
 		}
 	}
 }
