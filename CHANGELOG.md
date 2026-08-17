@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.1.13
+
+- display `NaN`, `Infinity` as numbers in dictionary
+- num and assignments errors highlight
+- incorrect title display
+
 ## 0.1.12
 
 - highlight unit expressions like `1/hour` as a single token inside dictionary/array values
