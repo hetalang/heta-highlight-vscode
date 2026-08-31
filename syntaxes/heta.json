@@ -88,7 +88,7 @@
 		},
 		"invalidIncludeStatement": {
 			"name": "invalid.illegal.include.heta",
-			"match": "\\binclude\\b\\s*(?=$)|\\binclude\\b[^\\r\\n]*\\bwith\\b(?!\\s*\\{)\\s*[^\\r\\n]*|\\binclude\\b[^\\r\\n]*\\btype\\b\\s+\"?[A-Za-z0-9]*_[^\\s\"]*\"?"
+			"match": "\\binclude\\b[ \\t]*(?=(?://|/\\*|$))|\\binclude\\b[ \\t]+\"?[A-Za-z0-9._/\\\\-]+\"?(?:[ \\t]+type[ \\t]+\"?[A-Za-z0-9]+\"?)?[ \\t]+with\\b(?![ \\t]*\\{)|\\binclude\\b[ \\t]+\"?[A-Za-z0-9._/\\\\-]+\"?[ \\t]+type[ \\t]+\"?[A-Za-z0-9]*_[^\\s\"]*\"?"
 		},
 		"includeStatement": {
 			"name": "meta.include.heta",
@@ -116,7 +116,7 @@
 		},
 		"namespace": {
 			"name": "meta.namespace.heta",
-			"begin": "(\\b(abstract|concrete)\\b)?\\s*\\b(namespace)\\b\\s+(.*)\\s+(begin)",
+			"begin": "(\\b(abstract|concrete)\\b)?\\s*\\b(namespace)\\b\\s+(?:(?!//|/\\*)[^\\r\\n])*\\s+(begin)\\b",
 			"beginCaptures": {
 				"1": {
 					"name": "keyword.control.reserved.heta"

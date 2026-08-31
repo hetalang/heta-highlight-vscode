@@ -1,5 +1,9 @@
 # Change Log
 
+## 0.2.1
+
+fix: avoid false syntax errors from comments in include and namespace: with, type in comments
+
 ## 0.2.0
 
 - align basic token highlighting with the current Heta PEG grammar
