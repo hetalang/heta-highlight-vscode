@@ -1,5 +1,9 @@
 # Change Log
 
+## 0.2.2
+
+fix: ; as stop symbol for include
+
 ## 0.2.1
 
 fix: avoid false syntax errors from comments in include and namespace: with, type in comments
