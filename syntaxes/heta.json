@@ -88,7 +88,7 @@
 		},
 		"invalidIncludeStatement": {
 			"name": "invalid.illegal.include.heta",
-			"match": "\\binclude\\b[ \\t]*(?=(?://|/\\*|$))|\\binclude\\b[ \\t]+\"?[A-Za-z0-9._/\\\\-]+\"?(?:[ \\t]+type[ \\t]+\"?[A-Za-z0-9]+\"?)?[ \\t]+with\\b(?![ \\t]*\\{)|\\binclude\\b[ \\t]+\"?[A-Za-z0-9._/\\\\-]+\"?[ \\t]+type[ \\t]+\"?[A-Za-z0-9]*_[^\\s\"]*\"?"
+			"match": "\\binclude\\b[ \\t]*(?=(?://|/\\*|;|$))|\\binclude\\b[ \\t]+\"?[A-Za-z0-9._/\\\\-]+\"?(?:[ \\t]+type[ \\t]+\"?[A-Za-z0-9]+\"?)?[ \\t]+with\\b(?![ \\t]*\\{)|\\binclude\\b[ \\t]+\"?[A-Za-z0-9._/\\\\-]+\"?[ \\t]+type[ \\t]+\"?[A-Za-z0-9]*_[^\\s\"]*\"?"
 		},
 		"includeStatement": {
 			"name": "meta.include.heta",
